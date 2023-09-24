@@ -23,10 +23,16 @@ function App() {
       reminder: true,
     }
   ])
+
+  //Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
   return (
     <div className="container">
       <Header title='task-tracker' text='Hellos' />
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ? (<Tasks tasks={tasks} deleteTask={deleteTask} />) : ('No Tasks')}
     </div>
   );
 }
